@@ -1,4 +1,4 @@
-const gallery = document.querySelectorAll('.gallery');
+const gallery = document.querySelector('.gallery');
 const images = [
   {
     preview: 'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg',
@@ -46,8 +46,26 @@ const images = [
     description: 'Lighthouse Coast Sea',
   },
 ];
-gallery.forEach((li, index) => {
-  const item = images[index];
 
-  const
+const galleryMarkup = images
+  .map(
+    ({ preview, original, description }) => `
+    <li class="gallery-item">
+      <a class="gallery-link" href="${original}">
+        <img
+          class="gallery-image"
+          src="${preview}"
+          data-source="${original}"
+          alt="${description}"
+        />
+      </a>
+    </li>
+  `
+  )
+  .join('');
+
+gallery.innerHTML = galleryMarkup;
+
+gallery.addEventListener('click', onGalleryClick => {
+  event.preventDefault();
 });
