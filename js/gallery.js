@@ -74,4 +74,10 @@ function onGalleryClick(event) {
   if (img.nodeName !== 'IMG') return;
   const largeImageURL = img.dataset.source;
   console.log(largeImageURL);
+
+  const instance = basicLightbox.create(`
+    <img src="${largeImageURL}">
+  `);
+
+  instance.show();
 }
